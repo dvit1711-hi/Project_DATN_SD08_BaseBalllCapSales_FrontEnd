@@ -2,14 +2,15 @@
   <div>
     <h2>Danh sách sản phẩm</h2>
 
-    <div v-for="p in products" :key="p.id" class="product-item">
-      <router-link :to="'/products/' + p.id">
-        <h3 style="cursor: pointer; color: blue">{{ p.productName }}</h3>
-      </router-link>
+    <div v-for="p in products" :key="p.productID">
+      <h2>{{ p.productName }}</h2>
+      <p>{{ p.price }}</p>
 
-      <p>Giá: {{ p.price }}đ</p>
+      <div v-for="c in p.colors" :key="c.productColorID">
+        <h4>Màu: {{ c.colorName }}</h4>
 
-      <button @click="addToCart(p)">Thêm vào giỏ</button>
+        <img v-for="img in c.images" :key="img.imageUrl" :src="img.imageUrl" width="100" />
+      </div>
     </div>
   </div>
 </template>
